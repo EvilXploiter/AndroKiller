@@ -1,0 +1,27 @@
+<div class="ui red segment" style="background-color: #404451;">
+    <table class="ui celled table">
+        <thead>
+            <tr>
+                <th style="color:red; background-color: #010101;text-align: center;" colspan="3">Downloads</th>
+            </tr>
+        </thead>
+        <tbody style="background-color:  rgb(131, 140, 143);">
+            <% pageData.forEach((item) => { 
+                    let date = new Date(item.time);
+                %>
+            <tr>
+                <td style="text-shadow: 0 0 7px #cf0be9; color: #fbfdfe;" class="collapsing"><%= date.toLocaleString('en-GB', { timeZone: 'UTC' }) %></td>
+                <td style="text-shadow: 0 0 7px #cf0be9; color: #fbfdfe;"><%= item.originalName %></td>
+                <td class="collapsing">
+                    <div class="ui buttons">
+                        <a href="<%= item.path %>" target="_blank" class="ui button blue">Open</a>
+                        <div class="or"></div>
+                        <a href="<%= item.path %>" download="<%= item.originalName %>"
+                            class="ui positive button">Save</a>
+                    </div>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>

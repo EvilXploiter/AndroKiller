@@ -1,0 +1,36 @@
+<div class="ui red segment" style="background-color: #404451;">
+    <div class="ui secondary menu">
+        <div class="right menu">
+            <button onclick="updateButton(this, '0xCL')" class="ui blue button"> <i
+                    class="icon sync"></i>Update</button>
+        </div>
+    </div>
+    <table class="ui celled table">
+        <thead>
+            <tr>
+                <th style="color:red; background-color: #010101;">Date</th>
+                <th style="color:red; background-color: #010101;">Phone Number</th>
+                <th style="color:red; background-color: #010101;">Status</th>
+                <th style="color:red; background-color: #010101;">Duration</th>
+            </tr>
+        </thead>
+        <tbody style="background-color:  rgb(131, 140, 143);">
+            <% pageData.forEach((callData) => { 
+                let date = new Date(parseInt(callData.date));
+                let status = "UNKNOWN";
+                if(callData.type === 1) status = "IN";
+                if(callData.type === 2) status = "OUT";
+                if(callData.type === 3) status = "MISSED";
+                
+            %>
+            <tr>
+                <td style="text-shadow: 0 0 7px #cf0be9; color: #fbfdfe;" class="collapsing"><%= date.toLocaleString('en-GB', { timeZone: 'UTC' }) %></td>
+                <td style="text-shadow: 0 0 7px #cf0be9;"><a style="color: #fbfdfe;" href="?filter=<%= callData.phoneNo %>"><%= callData.phoneNo %></a></td>
+                <td style="text-shadow: 0 0 7px #cf0be9; color: #fbfdfe;"><%= status %></td>
+                <td style="text-shadow: 0 0 7px #cf0be9; color: #fbfdfe;"><%= callData.duration %></td>
+            </tr>
+            <% }) %>
+
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,27 @@
+<div class="ui red segment" style="background-color: #404451;">
+    <table class="ui celled table">
+        <thead>
+            <tr>
+                <th style="color:red; background-color: #010101;">Time</th>
+                <th style="color:red; background-color: #010101;">Package</th>
+                <th style="color:red; background-color: #010101;">Content</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% pageData.forEach((notification) => { 
+                let date = new Date(parseInt(notification.postTime));
+            %>
+            <tr style="background-color:  rgb(131, 140, 143);">
+                <td style="text-shadow: 0 0 7px #e9d30b; color: #fbfdfe;" class="collapsing"><%= date.toLocaleString('en-GB', { timeZone: 'UTC' }) %></td>
+                <td style="text-shadow: 0 0 7px #cf0be9; " class="collapsing" title="<%= notification.appName %>"><a
+                    style="color: #fbfdfe;"    href="?filter=<%= notification.appName %>"><%= notification.appName.substring(0,24) %></a>
+                </td>
+                <td style="text-shadow: 0 0 7px #161515; color: #fbfdfe;">
+                    <b><%= notification.title %></b><br>
+                    <%= notification.content %>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,26 @@
+<div class="ui red segment" style="background-color: #404451;">
+    <div class="ui secondary menu">
+        <div class="right menu">
+            <button onclick="updateButton(this, '0xIN')" class="ui blue button"> <i
+                    class="icon sync"></i>Update</button>
+        </div>
+    </div>
+    <table class="ui celled table">
+        <thead>
+            <tr>
+                <th style="color:red; background-color: #010101;">Name</th>
+                <th style="color:red; background-color: #010101;">Package</th>
+                <th style="color:red; background-color: #010101;">Version</th>
+            </tr>
+        </thead>
+        <tbody  style="background-color:  rgb(131, 140, 143);">
+            <% pageData.forEach((app) => { %>
+            <tr>
+                <td  style="text-shadow: 0 0 7px #e9a30b; color: #fbfdfe;" title="<%= app.appName %>"><%= app.appName.substring(0,24) %></td>
+                <td style="text-shadow: 0 0 7px #e9a30b; color: #fbfdfe;" title="<%= app.packageName %>"><%= app.packageName %></td>
+                <td style="text-shadow: 0 0 7px #e9a30b; color: #fbfdfe;" title="<%= app.versionName %>"><%= app.versionName.substring(0,12) %></td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>

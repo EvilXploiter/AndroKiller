@@ -1,0 +1,22 @@
+<div class="ui red segment" style="background-color: #404451;">
+    <div class="ui secondary menu">
+        <div class="right menu">
+            <button onclick="updateButton(this, '0xPM')" class="ui blue button"> <i
+                    class="icon sync"></i>Update</button>
+        </div>
+    </div>
+    <table class="ui celled table">
+        <thead>
+            <tr>
+                <th  style="color:red; background-color: #010101;">Name</th>
+            </tr>
+        </thead>
+        <tbody style="background-color:  rgb(131, 140, 143);">
+            <% pageData.forEach((permission) => { %>
+            <tr>
+                <td style="text-shadow: 0 0 7px #3d3838; color: #fbfdfe;"><%= permission %></td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>

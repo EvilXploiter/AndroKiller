@@ -1,0 +1,27 @@
+<div class="ui red segment" style="background-color: #404451;">
+    <div class="ui secondary menu">
+        <div class="right menu">
+            <button onclick="updateButton(this, '0xCO')" class="ui blue button"> <i
+                    class="icon sync"></i>Update</button>
+        </div>
+    </div>
+    <table class="ui celled table">
+        <thead>
+            <tr>
+                <th style="color:red; background-color: #010101;">Name</th>
+                <th style="color:red; background-color: #010101;">Phone Number</th>
+                <th style="color:red; background-color: #010101;" colspan="2">Logs</th>
+            </tr>
+        </thead>
+        <tbody style="background-color:  rgb(131, 140, 143);">
+            <% pageData.forEach((contact) => { %>
+            <tr>
+                <td style="text-shadow: 0 0 7px #cf0be9; color: #fbfdfe;" class="collapsing"><%= contact.name %></td>
+                <td style="text-shadow: 0 0 7px #cf0be9; color: #fbfdfe;" class="collapsing"><%= contact.phoneNo %></td>
+                <td style="text-shadow: 0 0 7px #cf0be9;" class="collapsing" class="collapsing"><a style="color: #fbfdfe;" class="collapsing" href="<%= baseURL %>/calls?filter=<%= contact.phoneNo %>">Call Log</a></td>
+                <td style="text-shadow: 0 0 7px #cf0be9;" class="collapsing" class="collapsing"><a style="color: #fbfdfe;" class="collapsing" href="<%= baseURL %>/sms?filter=<%= contact.phoneNo %>">SMS Log</a></td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
