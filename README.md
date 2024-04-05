@@ -1,5 +1,8 @@
-# AndroKiller
-AndroKiller is an Advanced Android RAT
+<p align="center">
+<img src="https://github.com/Linuxndroid/DroidSpy/blob/master/assets/webpublic/logo.png" height="60"><br>
+A cloud based remote android managment suite, powered by NodeJS
+</p>
+
 
 ## AndroKiller Features
 - GPS Logging
