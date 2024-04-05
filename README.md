@@ -1,6 +1,6 @@
 <p align="center">
 <img src="https://github.com/EvilXploiter/AndroKiller/blob/main/Pic/logo.png" height="60"><br>
-A cloud based remote android managment suite, powered by NodeJS
+
 </p>
 
 
