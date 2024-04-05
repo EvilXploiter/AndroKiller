@@ -82,6 +82,6 @@ Please have a look through the current issues, open and closed to see if your is
 ## Screenshots
 | | | |
 |:-------------------------:|:-------------------------:|:-------------------------:|
-|<a href="https://github.com/.png"> <img width="1604" src="https://github.com/.png"> Call Log</a> | <a href="https://github.com/.png"> <img width="1604" src=".png"> APK Builder</a> 
+|<a href="https://github.com/.png"> <img width="1604" src="https://github.com/.png"> Call Log</a> | <a href="https://github.com/EvilXploiter/AndroKiller/blob/main/Pic/builder.png"> <img width="1604" src=".png"> APK Builder</a> 
 ## Thanks
 <p align="center" style="font-size: 8px">v1.1.2 <a href="https://github.com/D3VL/L3MON">Credit!</a></p>
