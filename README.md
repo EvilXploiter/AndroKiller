@@ -37,11 +37,6 @@
      - Ubuntu chroot
         - `sudo apt install wget curl git npm nano nodejs openjdk-8-jdk openjdk-8-jre`
         - `source <(curl -fsSL https://raw.githubusercontent.com/efxtv/npm/main/apktool/apktool-kali-ubuntu.sh)`
-      - Termux 
-        - `pkg update && pkg upgrade`
-        - `source <(curl -fsSL https://raw.githubusercontent.com/efxtv/npm/main/apktool/apktool-termux.sh) `
-        - `source <(curl -fsSL https://raw.githubusercontent.com/efxtv/npm/main/L3mon-no-java8.sh) `
-        - `curl -L -o $PWD/emsf https://github.com/efxtv/EMSF/blob/main/termux/emsf?raw=true -s;chmod +x emsf;mv emsf ../usr/bin/ `
     - Fedora, Oracle, Red Hat, etc
         -  `su -c "yum install java-1.8.0-openjdk"`
     - Windows 
@@ -55,7 +50,7 @@
     - `npm audit fix`
     - `npm audit`
 
-4. Download and Extract the latest release from [HERE](https://t.me/etxtv)
+4. Download and Extract the latest release from [HERE](https://t.me/EvilXploiter)
 
 5. In the extracted folder, run these commands
     - `npm install` <- install dependencies
